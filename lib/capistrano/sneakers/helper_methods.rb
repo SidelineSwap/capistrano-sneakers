@@ -13,9 +13,12 @@ module Capistrano
 
       def sneakers_pid_files
         sneakers_roles = Array(fetch(:sneakers_roles))
+        puts "\n\nSNEAKERS ROLES 1: #{sneakers_roles}\n\n"
         sneakers_roles.select! { |role| host.roles.include?(role) }
+        puts "\n\nSNEAKERS ROLES 2: #{sneakers_roles}\n\n"
         sneakers_roles.flat_map do |role|
           processes = fetch(:sneakers_processes)
+          puts "\n\nPROCESSES: #{processes}\n\n"
           if processes == 1
             fetch(:sneakers_pid)
           else
