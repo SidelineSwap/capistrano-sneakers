@@ -20,6 +20,7 @@ module Capistrano
           processes = fetch(:sneakers_processes)
           puts "\n\nPROCESSES: #{processes}\n\n"
           if processes == 1
+            puts "\n\nPID: #{fetch(:sneakers_pid)}\n\n"
             fetch(:sneakers_pid)
           else
             Array.new(processes) { |idx| fetch(:sneakers_pid).gsub(/\.pid$/, "-#{idx}.pid") }
